@@ -7,15 +7,17 @@ const BlogRouter = express.Router()
 BlogRouter.use(express.json())
 
 BlogRouter.get("/", getAuth, async (req, res) => {
+    if(!req.authId){
+        res.redirect('https://mern-stack-blogger.onrender.com/login');
+    }
+    else{
         await Blog.find().populate("user", "-password").sort("-createdOn").then(result => {
             res.status(200).json(result)
         })
             .catch(err => {
                 res.status(400).json({ msg: "No blogs found" })
-            })
-    
-   
-    
+            })    
+    }
 })
 
 BlogRouter.post("/create", getAuth, async (req, res) => {
