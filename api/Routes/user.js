@@ -7,14 +7,6 @@ import getAuth from "../middleware/auth.js"
 const UserRouter = express.Router()
 UserRouter.use(express.json())
 
-UserRouter.get("/", async (req, res)=>{
-    await User.find().then((result)=>{
-        res.status(200).json(result)
-    }).catch(err=>{
-        res.status(400).json({error:err})
-    })
-})
-
 UserRouter.post("/register",async (req, res)=>{
     try{
         console.log(req.body)
@@ -34,7 +26,7 @@ UserRouter.post("/register",async (req, res)=>{
     }
    
 })
-UserRouter.post("/", async (req,res)=>{
+UserRouter.post("/login", async (req,res)=>{
     try{
         console.log(req.body)
         const {email, password} = req.body
