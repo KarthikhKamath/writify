@@ -8,7 +8,7 @@ BlogRouter.use(express.json())
 
 BlogRouter.get("/", getAuth, async (req, res) => {
     if(!req.authId){
-        res.redirect('https://mern-stack-blogger.onrender.com/login');
+        res.redirect('https://kartblogs.netlify.app/login');
     }
     else{
         await Blog.find().populate("user", "-password").sort("-createdOn").then(result => {
