@@ -6,7 +6,7 @@ import { get } from "mongoose"
 const BlogRouter = express.Router()
 BlogRouter.use(express.json())
 
-BlogRouter.get("/home", getAuth, async (req, res) => {
+BlogRouter.get("/", getAuth, async (req, res) => {
         await Blog.find().populate("user", "-password").sort("-createdOn").then(result => {
             res.status(200).json(result)
         })
