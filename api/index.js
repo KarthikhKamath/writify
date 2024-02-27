@@ -5,13 +5,8 @@ import UserRouter from "./Routes/user.js";
 import BlogRouter from "./Routes/blog.js";
 const app = express();
 
-app.use(cors(
-    {
-        origin: ["https://deploy-mern-luhg.vercel.app"],
-        methods: [POST, "GET"],
-        credentiats: true
-    }
-))
+app.use(cors({credentials:true}))
+
 const port = 4000
 
 app.use("/api/user", UserRouter)
