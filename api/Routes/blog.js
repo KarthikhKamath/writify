@@ -13,9 +13,6 @@ BlogRouter.get("/", async (req, res) => {
             .catch(err => {
                 res.status(400).json({ msg: "No blogs found" })
             })
-    
-   
-    
 })
 
 BlogRouter.post("/create", getAuth, async (req, res) => {
