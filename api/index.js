@@ -5,8 +5,7 @@ import UserRouter from "./Routes/user.js";
 import BlogRouter from "./Routes/blog.js";
 const app = express();
 
-app.use(cors({credentials:true}))
-
+app.use(cors())
 const port = 4000
 
 app.use("/api/user", UserRouter)
